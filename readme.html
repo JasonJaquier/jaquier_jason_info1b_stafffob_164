@@ -1,0 +1,144 @@
+<!--
+Jason Jaquier - 11.06.2023 - 16h45 
+readme.txt	> How to manipulate the mess that I made
+
+Rédigé en français, car je suis gentil... Et pas suffisamment apte à la faire entièrement en anglais.
+l'HTML est privilégié pour sa simplicité d'utilisation, l'usage d'ancre afin de rediriger promptement sur le même document.
+-->
+<style>
+    .bugCheck a {
+        color: white;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+h1, h2, h3, h4 {
+    color: blueviolet;
+
+}
+
+h3, h4 {
+    font-weight: bold;
+    font-weight: normal;
+}
+    .intro {
+
+    }
+
+    #Sommaire, .Sommaire, .Sommaire a{
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .installation {
+
+    }
+
+    .Setup {
+
+    }
+
+    .faq {
+
+    }
+</style>
+
+
+<h1 id="StartPage">C'est quoi ce machin ?</h1>
+    <div class="intro"></div>
+        <p>Ce dossier zip, Git repository, truc machin, est voué à démontrer l'excellence.<br />
+        Malheureusement, je ne remplis guère les critères associés à ce titre de l'excellence. Ce que vous trouverez dans ce dossier s'associe plus à la misère.<br />
+        Sur cette joyeuse introduction, entrons directement le vif du sujet avec les éléments requis.</p>
+    </div>
+
+    <h2 id="Sommaire">Sommaire</h2>
+    <div class="Sommaire">
+        <a href="#StartPage">Intro</a><br />
+        <a href="#Install">Installation</a><br />
+        <a href="#Setup">Setup</a><br />
+        <a href="#StartPage">Intro</a><br />
+        <a href="#faq">FAQ</a><br />
+    
+    </div>
+<h2 id="Install">Installation, mise en service</h2>
+    <div class="installation">
+        <p>Pour faire fonctionner ce truc, il vous faudra les éléments suivants :
+                <ul>
+                    <li>PyCharm, recommandé (pour Maccaud!)</li>
+                    <li>Serveur MySQL</li>
+                        <ul>
+                            <li>WampServer</li>
+                            <li>Laragon</li>
+                            <li>etc...</li>
+                        </ul>
+                    <li>navigateur web</li>
+                    <li>GitHub sera utilisé</li>
+                    <li>Langage Python à installer</li>
+                </ul>
+        Il ne vous que peu d'éléments, mais il est important de les mettre en place correctement.<br />
+        <a href="https://www.jetbrains.com/fr-fr/pycharm/">PyCharm</a></PyCharm> est recommandé pour l'ouverture du projet afin de lancer le service qui fera office de "serveur" afin de gérer les actions disponible sur le site.<br />
+        Prière également, lors de l'installation, de cocher les cases ASSOCIATIONS, ADD PATH, etc. Sans elle, PyCharm sera... bof.<br />
+
+        Vous trouverez également à l'intérieur du fichier un document nommé requirements.txt vous indiquant les versions utilisées pour le bon fonctionnement du projet.<br />
+        Pour garantir d'être sur les bonnes versions, nous recommandons PyCharm qui, pour sûr, vous mettra les bonnes versions.<br />
+        
+        L'usage du serveur MySQL est obligatoire afin d'utiliser la base de donnée. Lequel choisir est purement personnel et ne devrait pas impacter l'usage du programme.<br />
+        Le Python est également un élément crucial, voici l'<a href="https://www.python.org/downloads/">url</a>
+        Le navigateur est libre de votre choix.
+
+        Une fois ces différents programmes installés, préparez-vous, ça va chauffer.<br />
+        <em>quelque chose s'est mal passé? Venez, <a href="#faq">suivez-moi</a>.</em>
+    </p>
+    </div>
+
+<h2 id="Setup">Mise en route</h2>
+    <div class="Setup">
+        <p>
+            Vous voilà prêts à faire feu... Ca tombe bien, le grill vient de s'éteindre.<br />
+            <h4>Mise en service bdd</h4>
+            Première étape, crucial, lancer votre serveur de base de donnée.<br />
+            La page <a href="http://localhost/">localhost</a> devrait être fonctionnelle, c'est un bon indicateur chez la plupart des serveurs.<br />
+            Il vous faut désormais remplir la base de donnée, à l'aide du dump fourni dans le dossier (APP_FILMS_164\database)<br />
+            <br />
+
+            <h4>Mise en service PyCharm</h4>
+            Base prête, attaquons le code.<br />
+            Commencer par ouvrir PyCharm et ouvrir le projet.<br />
+            Créer un nouvel environnement pour le projet, vous devez avoir le 'venv' qui se crée.
+            Mettre à jour le fichier '.env' situé à la racine du projet.<br />
+            A partir de là, faites un backup de la base de donnée à utiliser. La stocker quelque part de safe.<br />
+            Depuis PyCharm, ouvrir le dossier 'Database' et faire les différents tests.<br />
+            Si quelque chose ne fonctionne pas bien, <a href="#faq">Voir la FAQ</a>.<br />
+
+            Si tout roule, lancer le 'run_mon_app.py'. Vous obtiendrez une URL et un port qui vont amèneront sur votre nouveau site!<br />
+            </p>
+    </div>
+
+<h2 id="Warning">Précaution d'emploi</h2>
+    <div class="Warning">
+        <p>
+            Ce programme n'est pas recommandé aux enfants ainsi qu'aux femmes enceintes. Les personnes faibles mentalement sont également à tenir éloignées de ce projet.<br />
+            Toute distribution de ce programme, sans l'autorisation de son créateur, pourra se retourner contre vous comme étant, je cite, crime contre l'humanité.<br />
+
+            Cet ensemble restant dans une forme expérimentale et non finie, il n'est pas recommandé de trop pousser vos tests & amusements.<br />
+            Le plus drôle, c'est que les suppressions ont été terminées et ce correctement. <br />
+            - Manquant : fonction d'édit de "film", reconvertie en "match" en backstage. Le bouton ne fonctionne pas.<br />
+            <span style="font-weight: bold; color: #FF0000">- Les données proposées avec ce programme sont réelles. Il est strictement interdit de les redistribuer. (Et c'est vrai, pas une blague.)</span><br />
+            - Je le répète, la suppression fonctionne partout où elle est présente. C'est dangereux.<br />
+            - Vous balader au sein du code source peut, à très court terme, vous faire perdre vos cheveux, votre famille, et même l'envie de vivre. Vous êtes seul face à ce fléau...
+        
+            <br />
+            Etant donné le peu d'audience attendue, je me permets de vous laisser, comme indiqué, seul pour la suite. Bon chance.
+        </p>
+    </div>
+
+<h2 id="faq">FAQ</h2>
+    
+        <p>Mmh... la FAQ a l'air bugué aussi... Dommage!<br />
+        <div class="bugCheck">
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygULUmljayBBc3RsZXk%3D" target="_BLANK"><br/>
+            Comme si j'étais capable d'aider qui que ce soit.<br />
+            On triche pas, on lit pas le code HTML!!<br />Lol.<br /></a>
+        </p>
+
+    </div>

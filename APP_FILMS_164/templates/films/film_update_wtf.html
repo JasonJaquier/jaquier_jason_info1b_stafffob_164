@@ -5,19 +5,24 @@
 	<div class="row">
 		<div class="col-md-12">
 			<p>
-				Editer un FILM
+				Editer un gameDay Date<br />
+				<br />
+				Sadly, does not work... Clicking on it won't show any problem but it won't do anything as well.<br />
+				Well, I tried... A little bit.
 			</p>
 			<form action="" method="POST" novalidate>
 				<!-- Protection contre les attaques Cross-Site Request Forgery (CSRF) -->
 				{{ form_update_film.hidden_tag() }}
 				<div class="form-group">
 					<p>
+						<!-- gameDay Date -->
 						{{ form_update_film.nom_film_update_wtf.label }}<br>
 						{{ form_update_film.nom_film_update_wtf(cols=50, rows=3) }}<br>
 						{% for error in form_update_film.nom_film_update_wtf.errors %}
 						<span style="color: red;">[{{ error }}]</span>
 						{% endfor %}
 					</p>
+					<!-- The rest, don't care.
 					<p>
 						{{ form_update_film.duree_film_update_wtf.label }}<br>
 						{{ form_update_film.duree_film_update_wtf(size=32) }}<br>
@@ -46,6 +51,7 @@
 						<span style="color: red;">[{{ error }}]</span>
 						{% endfor %}
 					</p>
+					-->
 				</div>
 				{{ form_update_film.submit(class="btn btn-primary") }}
 			</form>

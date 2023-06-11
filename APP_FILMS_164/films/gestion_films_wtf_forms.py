@@ -16,16 +16,13 @@ class FormWTFAddFilm(FlaskForm):
         Dans le formulaire "genres_ajouter_wtf.html" on impose que le champ soit rempli.
         Définition d'un "bouton" submit avec un libellé personnalisé.
     """
-    nom_film_regexp = ""
-    nom_film_add_wtf = StringField("Nom du film ", validators=[Length(min=2, max=2000, message="min 2 max 20"),
+    nom_film_regexp = "^[0-9]{4}(0[0-9]|1[0-2])(0[0-9]|1[0-9]|2[0-9]|3[01])$"
+    nom_film_add_wtf = StringField("GameDay Date", validators=[Length(min=8, max=8, message="8 caractères uniquement"),
                                                                Regexp(nom_film_regexp,
-                                                                      message="Pas de chiffres, de caractères "
-                                                                              "spéciaux, "
-                                                                              "d'espace à double, de double "
-                                                                              "apostrophe, de double trait union")
+                                                                      message="Que chiffre, format YYYY/MM/DD")
                                                                ])
 
-    submit = SubmitField("Enregistrer film")
+    submit = SubmitField("Enregistrer")
 
 
 class FormWTFUpdateFilm(FlaskForm):
@@ -34,7 +31,8 @@ class FormWTFUpdateFilm(FlaskForm):
         Définition d'un "bouton" submit avec un libellé personnalisé.
     """
 
-    nom_film_update_wtf = StringField("Clavioter le titre", widget=TextArea())
+    nom_film_update_wtf = DateField("gameDay Day", validators=[InputRequired("Date obligatoire"),
+                                                               DataRequired("Date non valide")])
     duree_film_update_wtf = IntegerField("Durée du film (minutes)", validators=[NumberRange(min=1, max=5000,
                                                                                             message=u"Min %(min)d et "
                                                                                                     u"max %(max)d "

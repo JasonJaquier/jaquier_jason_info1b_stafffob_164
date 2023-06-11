@@ -1,27 +1,9 @@
--- OM 2021.02.17
--- FICHIER MYSQL POUR FAIRE FONCTIONNER LES EXEMPLES
--- DE REQUETES MYSQL
--- Database: Jaquier_Jason_Info1B_StaffFOB_164_2023
-
--- Destruction de la BD si elle existe.
--- Pour être certain d'avoir la dernière version des données
-
-DROP DATABASE IF EXISTS Jaquier_Jason_Info1B_StaffFOB_164_2023;
-
--- Création d'un nouvelle base de donnée
-
-CREATE DATABASE IF NOT EXISTS Jaquier_Jason_Info1B_StaffFOB_164_2023;
-
--- Utilisation de cette base de donnée
-
-USE Jaquier_Jason_Info1B_StaffFOB_164_2023;
--- --------------------------------------------------------
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 30 mars 2023 à 09:03
+-- Généré le : dim. 11 juin 2023 à 08:33
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -36,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `164_fob`
+-- Base de données : `jaquier_jason_info1b_stafffob_164_2023_v2`
 --
 
 -- --------------------------------------------------------
@@ -48,19 +30,19 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `t_choix`;
 CREATE TABLE IF NOT EXISTS `t_choix` (
   `idChoix` int NOT NULL AUTO_INCREMENT,
-  `idMatch` int NOT NULL,
-  `idPersonne` int NOT NULL,
-  `pChoix` int DEFAULT NULL,
+  `fk_Match` int NOT NULL,
+  `fk_Personne` int NOT NULL,
+  `p_Choix` int DEFAULT NULL,
   PRIMARY KEY (`idChoix`),
-  KEY `FKChoixMatch` (`idMatch`),
-  KEY `FKChoixPersonne` (`idPersonne`)
-) ENGINE=InnoDB AUTO_INCREMENT=573 DEFAULT CHARSET=latin1;
+  KEY `FKChoixPersonne` (`fk_Personne`),
+  KEY `FKChoixMatch` (`fk_Match`)
+) ENGINE=InnoDB AUTO_INCREMENT=573 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `t_choix`
 --
 
-INSERT INTO `t_choix` (`idChoix`, `idMatch`, `idPersonne`, `pChoix`) VALUES
+INSERT INTO `t_choix` (`idChoix`, `fk_Match`, `fk_Personne`, `p_Choix`) VALUES
 (1, 1, 1, 1),
 (2, 2, 1, 1),
 (3, 3, 1, 1),
@@ -645,62 +627,62 @@ CREATE TABLE IF NOT EXISTS `t_coordonnees` (
   `idCoordonnees` int NOT NULL,
   `pAdresse` varchar(50) DEFAULT NULL,
   `pNoAdresse` int DEFAULT NULL,
-  `pNoNpa` int DEFAULT NULL,
+  `pNoNPA` int DEFAULT NULL,
   `pLocalite` varchar(50) DEFAULT NULL,
   `pEmail` varchar(50) DEFAULT NULL,
-  `pTelephone` char(1) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `pTelephone` int DEFAULT NULL,
   PRIMARY KEY (`idCoordonnees`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `t_coordonnees`
 --
 
-INSERT INTO `t_coordonnees` (`idCoordonnees`, `pAdresse`, `pNoAdresse`, `pNoNpa`, `pLocalite`, `pEmail`, `pTelephone`) VALUES
-(1, 'Route du Platy', 8, 1752, 'Villars-sur-Glâne', 'jason.jaquier@gmail.com', '0'),
-(2, 'Imp. du Savouet', 4, 1725, 'Posieux', 'roselyne.kolly@bluewin.ch', '0'),
-(3, 'Imp. du Savouet', 4, 1752, 'Villars-sur-Glâne', 'kollyl03@gmail.com', '0'),
-(4, 'Pérolles d\'en Haut', 6, 1752, 'Villars-sur-Glâne', 'rolandalex.duriaux@gmail.com ', '0'),
-(5, 'Rte de la Poya', 27, 1726, 'Farvagny', 'martino.van@bluewin.ch', '0'),
-(6, 'Rte du Châno', 45, 1782, 'Belfaux', 'sanfrancois@gmail.com', '0'),
-(7, 'Ch. De la Garde', 11, 1732, 'Arconciel', 'hayoznicole@bluewin.ch', '0'),
-(8, 'Imp. De la Planchetta', 10, 1763, 'Granges-Paccot', 'vanessa.vancardo19@gmail.com', '0'),
-(9, 'Rte de Chésopelloz', 25, 1782, 'Belfaux', 'anthony.damato@bluewin.ch', '0'),
-(10, 'Champ Thomas', 61, 1754, 'Corjolens', 'elsa.mettraux@gmail.com', '0'),
-(11, 'Rte de villars-vert', 31, 1752, 'Villars-sur-Glâne', 'flavio2570@hotmail.com', '0'),
-(12, NULL, NULL, NULL, 'NULL', 'petrushova.anastasiya@gmail.com', '0'),
-(13, 'Route des Rusilles', 43, 1724, 'Le Mouret', 'paulinegillard.2006@gmail.com', '0'),
-(14, 'Rte du Centre', 52, 1723, 'Marly', 'dupasquierlaurine@gmail.com', '0'),
-(15, 'Ch. Des Cossettes', 13, 1723, 'Marly', 'emma.tlmn@icloud.com', '0'),
-(16, 'Rte de Planafaye', 34, 1752, 'Villars-sur-Glâne', 'paul.leuba@studentfr.ch', '0'),
-(17, 'Rte de Villamont A', 1, 1752, 'Villars-sur-Glâne', 'Tobias.Buss@studentfr.ch', '0'),
-(18, 'Ch des Planchettes', 25, 1731, 'Ependes', 'lennkust@gmail.com', '0'),
-(19, 'Rue des Charmettes', 1, 1700, 'Fribourg', 'miradijemaiq200019@gmail.com', '0'),
-(20, 'Rte de Belmont', 89, 1741, 'Cottens', 'alisha.elsener@netplus.ch', '0'),
-(21, 'Route des Martinets B', 63, 1752, 'Villars-sur-Glâne', 'emeric.zapf@gmail.com', '0'),
-(22, 'Rte de Kaisa', 35, 1726, 'Farvagny', 'scherlera@gmail.com', '0'),
-(23, 'Rte de Chésopelloz', 25, 1752, 'Belfaux', 'kylian.damato@bluewin.ch', '0'),
-(24, 'Rte de matran', 25, 1752, 'Villars-sur-Glâne', 'jios.1752@gmail.com', '0'),
-(25, NULL, NULL, NULL, 'Villars-sur-Glâne', 'galleyv@gmail.com', '0'),
-(26, 'Rte du belvédère', 6, 1752, 'Villars-sur-Glâne', 'myriamcostaa@gmail.com', '0'),
-(27, 'Rue des Comtes', 1, 1752, 'Villars-sur-Glâne', 'trolliet.kevin@gmail.com', '0'),
-(28, NULL, NULL, 1723, 'Marly', 'halitaj.luanit@icloud.com', '0'),
-(29, 'Fuhra', 33, 1737, 'Plasselb', 'nathan.serrano34@icloud.com', '0'),
-(30, 'Rte des Arsenaux', 37, 1700, 'Fribourg', 'adele.ayer@gmail.com', '0'),
-(31, 'Rue de l\'industrie', 3, 1700, 'Fribourg', 'sc.schiara@icloud.com', '0'),
-(32, 'Route du Brand', 15, 1724, 'Le Mouret', 'mathilde.zosso@gmail.com', '0'),
-(33, 'Rte de Chamblioux', 36, 1763, 'Granges-Paccot', 'roxane.goumaz@hotmail.fr', '0'),
-(34, 'Chemin de l\'Ancienne Ecole', 37, 1288, 'Aire-La-Ville', 'lluismien@gmail.com', '0'),
-(35, 'Route Jacques Vogt', 2, 1700, 'Fribourg', 'elodie.3@bluewin.ch', '0'),
-(36, 'Rte de St-Cergue', 9, 1295, 'Mies', 'quentindecurnex@gmail.com', '0'),
-(37, 'Rte de la Colline', 12, 1740, 'Neyruz', 'laure_stucky@bluewin.ch', '0'),
-(38, 'Impasse du verné', 25, 1696, 'Vuisternens-En-Ogoz', 'kant.legrix@gmail.com', '0'),
-(39, 'Rte de Chamblioux', 36, 1763, 'Granges-Paccot', 'goumaz.albertine@bluewin.ch', '0'),
-(40, 'Grand Clos', 6, 1726, 'Farvagny', 'john.m@bluewin.ch', '0'),
-(41, 'Imp. de l\'Artisanat', 1, 1774, 'Grolley', 'maebicher@bluewin.ch', '0'),
-(42, 'Rte de Montagny', 8, 1772, 'Ponthaux', 'marguetbr@bluewin.ch', '0'),
-(43, 'Rte de Chamblioux', 37, 1763, 'Granges-Paccot', 'mario.goumaz@hotmail.com', '0'),
-(44, 'Rue de la Poterne', 27, 1635, 'Bulle', 'ceroulin@icloud.com', '0');
+INSERT INTO `t_coordonnees` (`idCoordonnees`, `pAdresse`, `pNoAdresse`, `pNoNPA`, `pLocalite`, `pEmail`, `pTelephone`) VALUES
+(1, 'Route du Platy', 8, 1752, 'Villars-sur-Glâne', 'jason.jaquier@gmail.com', 78),
+(2, 'Imp. du Savouet', 4, 1725, 'Posieux', 'roselyne.kolly@bluewin.ch', 79),
+(3, 'Imp. du Savouet', 4, 1752, 'Villars-sur-Glâne', 'kollyl03@gmail.com', 79),
+(4, 'Pérolles d\'en Haut', 6, 1752, 'Villars-sur-Glâne', 'rolandalex.duriaux@gmail.com ', 79),
+(5, 'Rte de la Poya', 27, 1726, 'Farvagny', 'martino.van@bluewin.ch', 77),
+(6, 'Rte du Châno', 45, 1782, 'Belfaux', 'sanfrancois@gmail.com', 79),
+(7, 'Ch. De la Garde', 11, 1732, 'Arconciel', 'hayoznicole@bluewin.ch', 79),
+(8, 'Imp. De la Planchetta', 10, 1763, 'Granges-Paccot', 'vanessa.vancardo19@gmail.com', 79),
+(9, 'Rte de Chésopelloz', 25, 1782, 'Belfaux', 'anthony.damato@bluewin.ch', 79),
+(10, 'Champ Thomas', 61, 1754, 'Corjolens', 'elsa.mettraux@gmail.com', 77),
+(11, 'Rte de villars-vert', 31, 1752, 'Villars-sur-Glâne', 'flavio2570@hotmail.com', 78),
+(12, NULL, NULL, NULL, 'NULL', 'petrushova.anastasiya@gmail.com', 78),
+(13, 'Route des Rusilles', 43, 1724, 'Le Mouret', 'paulinegillard.2006@gmail.com', 78),
+(14, 'Rte du Centre', 52, 1723, 'Marly', 'dupasquierlaurine@gmail.com', 79),
+(15, 'Ch. Des Cossettes', 13, 1723, 'Marly', 'emma.tlmn@icloud.com', 79),
+(16, 'Rte de Planafaye', 34, 1752, 'Villars-sur-Glâne', 'paul.leuba@studentfr.ch', 79),
+(17, 'Rte de Villamont A', 1, 1752, 'Villars-sur-Glâne', 'Tobias.Buss@studentfr.ch', 79),
+(18, 'Ch des Planchettes', 25, 1731, 'Ependes', 'lennkust@gmail.com', 79),
+(19, 'Rue des Charmettes', 1, 1700, 'Fribourg', 'miradijemaiq200019@gmail.com', 79),
+(20, 'Rte de Belmont', 89, 1741, 'Cottens', 'alisha.elsener@netplus.ch', 79),
+(21, 'Route des Martinets B', 63, 1752, 'Villars-sur-Glâne', 'emeric.zapf@gmail.com', 79),
+(22, 'Rte de Kaisa', 35, 1726, 'Farvagny', 'scherlera@gmail.com', 76),
+(23, 'Rte de Chésopelloz', 25, 1752, 'Belfaux', 'kylian.damato@bluewin.ch', 79),
+(24, 'Rte de matran', 25, 1752, 'Villars-sur-Glâne', 'jios.1752@gmail.com', 79),
+(25, NULL, NULL, NULL, 'Villars-sur-Glâne', 'galleyv@gmail.com', 79),
+(26, 'Rte du belvédère', 6, 1752, 'Villars-sur-Glâne', 'myriamcostaa@gmail.com', 78),
+(27, 'Rue des Comtes', 1, 1752, 'Villars-sur-Glâne', 'trolliet.kevin@gmail.com', 79),
+(28, NULL, NULL, 1723, 'Marly', 'halitaj.luanit@icloud.com', 76),
+(29, 'Fuhra', 33, 1737, 'Plasselb', 'nathan.serrano34@icloud.com', 79),
+(30, 'Rte des Arsenaux', 37, 1700, 'Fribourg', 'adele.ayer@gmail.com', 79),
+(31, 'Rue de l\'industrie', 3, 1700, 'Fribourg', 'sc.schiara@icloud.com', 79),
+(32, 'Route du Brand', 15, 1724, 'Le Mouret', 'mathilde.zosso@gmail.com', 79),
+(33, 'Rte de Chamblioux', 36, 1763, 'Granges-Paccot', 'roxane.goumaz@hotmail.fr', 79),
+(34, 'Chemin de l\'Ancienne Ecole', 37, 1288, 'Aire-La-Ville', 'lluismien@gmail.com', 79),
+(35, 'Route Jacques Vogt', 2, 1700, 'Fribourg', 'elodie.3@bluewin.ch', 79),
+(36, 'Rte de St-Cergue', 9, 1295, 'Mies', 'quentindecurnex@gmail.com', 79),
+(37, 'Rte de la Colline', 12, 1740, 'Neyruz', 'laure_stucky@bluewin.ch', 79),
+(38, 'Impasse du verné', 25, 1696, 'Vuisternens-En-Ogoz', 'kant.legrix@gmail.com', 78),
+(39, 'Rte de Chamblioux', 36, 1763, 'Granges-Paccot', 'goumaz.albertine@bluewin.ch', 79),
+(40, 'Grand Clos', 6, 1726, 'Farvagny', 'john.m@bluewin.ch', 79),
+(41, 'Imp. de l\'Artisanat', 1, 1774, 'Grolley', 'maebicher@bluewin.ch', 79),
+(42, 'Rte de Montagny', 8, 1772, 'Ponthaux', 'marguetbr@bluewin.ch', 79),
+(43, 'Rte de Chamblioux', 37, 1763, 'Granges-Paccot', 'mario.goumaz@hotmail.com', 79),
+(44, 'Rue de la Poterne', 27, 1635, 'Bulle', 'ceroulin@icloud.com', 79);
 
 -- --------------------------------------------------------
 
@@ -713,7 +695,7 @@ CREATE TABLE IF NOT EXISTS `t_match` (
   `idMatch` int NOT NULL,
   `dateMatch` date DEFAULT NULL,
   PRIMARY KEY (`idMatch`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `t_match`
@@ -742,12 +724,12 @@ INSERT INTO `t_match` (`idMatch`, `dateMatch`) VALUES
 
 DROP TABLE IF EXISTS `t_personne`;
 CREATE TABLE IF NOT EXISTS `t_personne` (
-  `idPersonne` int NOT NULL,
+  `idPersonne` int NOT NULL AUTO_INCREMENT,
   `pNom` varchar(50) DEFAULT NULL,
   `pPrenom` varchar(50) DEFAULT NULL,
   `pDateDeNaissance` date DEFAULT NULL,
   PRIMARY KEY (`idPersonne`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `t_personne`
@@ -797,7 +779,8 @@ INSERT INTO `t_personne` (`idPersonne`, `pNom`, `pPrenom`, `pDateDeNaissance`) V
 (41, 'Aebischer', 'Marius', NULL),
 (42, 'Marguet', 'Brigitte', NULL),
 (43, 'Goumaz', 'Mario', NULL),
-(44, 'Roulin', 'Cédric', NULL);
+(44, 'Roulin', 'Cédric', NULL),
+(49, 'testnom', 'testprenom', '2023-05-29');
 
 --
 -- Contraintes pour les tables déchargées
@@ -807,8 +790,14 @@ INSERT INTO `t_personne` (`idPersonne`, `pNom`, `pPrenom`, `pDateDeNaissance`) V
 -- Contraintes pour la table `t_choix`
 --
 ALTER TABLE `t_choix`
-  ADD CONSTRAINT `FKChoixMatch` FOREIGN KEY (`idMatch`) REFERENCES `t_match` (`idMatch`),
-  ADD CONSTRAINT `FKChoixPersonne` FOREIGN KEY (`idPersonne`) REFERENCES `t_personne` (`idPersonne`);
+  ADD CONSTRAINT `FKChoixMatch` FOREIGN KEY (`fk_Match`) REFERENCES `t_match` (`idMatch`),
+  ADD CONSTRAINT `FKChoixPersonne` FOREIGN KEY (`fk_Personne`) REFERENCES `t_personne` (`idPersonne`);
+
+--
+-- Contraintes pour la table `t_coordonnees`
+--
+ALTER TABLE `t_coordonnees`
+  ADD CONSTRAINT `FKcoordonneesPersonne` FOREIGN KEY (`idCoordonnees`) REFERENCES `t_personne` (`idPersonne`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

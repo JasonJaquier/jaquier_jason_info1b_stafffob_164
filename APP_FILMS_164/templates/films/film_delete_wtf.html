@@ -12,14 +12,16 @@
 				<thead>
 				<tr>
 					<th class="">
-						Id
+						idMatch
 					</th>
 					<th class="">
-						Nom
+						dateMatch
 					</th>
+
 					<th class="">
-						Durée
+						Tot dispo
 					</th>
+					<!--
 					<th class="">
 						Date de sortie
 					</th>
@@ -29,6 +31,7 @@
 					<th class="">
 						Affiche
 					</th>
+					-->
 				</tr>
 				</thead>
 				{% endif %}
@@ -36,14 +39,15 @@
 				<tbody>
 				<tr>
 					<th class="align-middle">
-						{{ row.id_film }}
+						{{ row.idMatch }}
 					</th>
 					<th class="align-middle">
-						{{ row.nom_film }}
+						{{ row.dateMatch }}
 					</th>
 					<th class="align-middle">
-						{{ row.duree_film|default("", True) }}
+						{{ row.somme }}
 					</th>
+					<!--
 					<th class="align-middle">
 						{{ row.date_sortie_film|default("", True) }}
 					</th>
@@ -55,6 +59,7 @@
 							 style="border: 0;display:block; width:150px; max-height:auto;"
 							 alt="image masquée FFP8 (in COVID-19 Memory) (absente) mod 164">
 					</th>
+					-->
 
 				<tr>
 
